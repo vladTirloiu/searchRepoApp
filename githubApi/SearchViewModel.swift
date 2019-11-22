@@ -10,6 +10,7 @@ import UIKit
 
 protocol SearchViewModelDelegate {
     func showGeneralError(message: String)
+    func passFullNameArray(array: [String])
 }
 
 struct ResponseData: Codable {
@@ -17,10 +18,12 @@ struct ResponseData: Codable {
 }
 
 struct Items: Codable {
-    let stargazers_count: Int?
+    let full_name: String?
 }
 
 class SearchViewModel {
+    
+    var reposNamesArray = Array<String>()
     
     var delegate: SearchViewModelDelegate?
     
@@ -40,7 +43,14 @@ class SearchViewModel {
                     if searchedText.count == 0 {
                         self.delegate?.showGeneralError(message: "Textfield is empty")
                     } else {
-                        print(responseData.items.first!)
+                        for (index, _) in responseData.items.enumerated() {
+                            if let fullName = responseData.items[index].full_name {
+                                self.reposNamesArray.append(fullName)
+                            }
+                            
+                            self.delegate?.passFullNameArray(array: self.reposNamesArray)
+                            print(self.reposNamesArray)
+                        }
                     }
                 } catch {
                     print(error)

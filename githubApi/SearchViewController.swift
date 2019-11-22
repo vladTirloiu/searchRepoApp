@@ -10,8 +10,12 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    var reposNamesArray = Array<String>()
+    
     let searchViewModel = SearchViewModel()
 
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var searchTextField: UITextField!
     
     @IBOutlet weak var searchButton: UIButton!
@@ -25,12 +29,37 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchViewModel.delegate = self
+        
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 
 
 }
 
-extension SearchViewController: SearchViewModelDelegate {
+extension SearchViewController: SearchViewModelDelegate, UITableViewDelegate, UITableViewDataSource {
+    
+    func passFullNameArray(array: [String]) {
+        reposNamesArray = array
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return reposNamesArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+                
+        let desplayedString = reposNamesArray[indexPath.row]
+        cell.textLabel?.text = desplayedString
+        
+        return cell
+    }
+    
     
     func showGeneralError(message: String) {
         DispatchQueue.main.async {
