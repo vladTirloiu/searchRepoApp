@@ -14,6 +14,7 @@
 		B41CCB8E23846C8000FC7F62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B41CCB8D23846C8000FC7F62 /* Assets.xcassets */; };
 		B41CCB9123846C8000FC7F62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41CCB8F23846C8000FC7F62 /* LaunchScreen.storyboard */; };
 		B41CCB99238474FA00FC7F62 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41CCB98238474FA00FC7F62 /* SearchViewModel.swift */; };
+		B42145A823886D0E001C4532 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42145A723886D0E001C4532 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B41CCB9023846C8000FC7F62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B41CCB9223846C8000FC7F62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B41CCB98238474FA00FC7F62 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		B42145A723886D0E001C4532 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				B41CCB8423846C7B00FC7F62 /* AppDelegate.swift */,
 				B41CCB8623846C7B00FC7F62 /* SceneDelegate.swift */,
+				B42145A723886D0E001C4532 /* DetailsViewController.swift */,
 				B41CCB8823846C7B00FC7F62 /* SearchViewController.swift */,
 				B41CCB98238474FA00FC7F62 /* SearchViewModel.swift */,
 				B41CCB8A23846C7B00FC7F62 /* Main.storyboard */,
@@ -145,6 +148,7 @@
 				B41CCB8523846C7B00FC7F62 /* AppDelegate.swift in Sources */,
 				B41CCB99238474FA00FC7F62 /* SearchViewModel.swift in Sources */,
 				B41CCB8723846C7B00FC7F62 /* SceneDelegate.swift in Sources */,
+				B42145A823886D0E001C4532 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

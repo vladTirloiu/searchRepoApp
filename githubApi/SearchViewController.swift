@@ -33,13 +33,25 @@ class SearchViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
-
-
 }
 
 extension SearchViewController: SearchViewModelDelegate, UITableViewDelegate, UITableViewDataSource {
     
+    func showDetailsVC() {
+        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        guard let vc = mainStoryboard.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else { return }
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
+    }
+    
+    
     func passFullNameArray(array: [String]) {
+        if reposNamesArray.first != nil {
+            reposNamesArray.removeAll()
+        }
         reposNamesArray = array
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -58,6 +70,11 @@ extension SearchViewController: SearchViewModelDelegate, UITableViewDelegate, UI
         cell.textLabel?.text = desplayedString
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        showDetailsVC()
     }
     
     

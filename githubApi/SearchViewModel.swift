@@ -11,6 +11,7 @@ import UIKit
 protocol SearchViewModelDelegate {
     func showGeneralError(message: String)
     func passFullNameArray(array: [String])
+    func showDetailsVC()
 }
 
 struct ResponseData: Codable {
@@ -49,14 +50,17 @@ class SearchViewModel {
                             }
                             
                             self.delegate?.passFullNameArray(array: self.reposNamesArray)
-                            print(self.reposNamesArray)
                         }
+                        self.reposNamesArray.removeAll()
                     }
                 } catch {
                     print(error)
                 }
             }
-            
         }.resume()
+    }
+    
+    func cellTapped() {
+        delegate?.showDetailsVC()
     }
 }
