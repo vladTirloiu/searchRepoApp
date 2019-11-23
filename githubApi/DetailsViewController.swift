@@ -18,12 +18,17 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(modalScan))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: textView.frame.width, height: textView.frame.height))
+        navBar.barTintColor = .white
+        self.textView.addSubview(navBar)
+        let button = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(dismissDetailsVC))
+        let navItem = UINavigationItem()
+        navItem.leftBarButtonItem = button
+        navBar.setItems([navItem], animated: true)
     }
     
-    @objc func modalScan() {
+    @objc func dismissDetailsVC() {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }
