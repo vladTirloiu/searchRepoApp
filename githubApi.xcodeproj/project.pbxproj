@@ -15,6 +15,7 @@
 		B41CCB9123846C8000FC7F62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41CCB8F23846C8000FC7F62 /* LaunchScreen.storyboard */; };
 		B41CCB99238474FA00FC7F62 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41CCB98238474FA00FC7F62 /* SearchViewModel.swift */; };
 		B42145A823886D0E001C4532 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42145A723886D0E001C4532 /* DetailsViewController.swift */; };
+		B4491296238A8ED900BED742 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4491295238A8ED900BED742 /* String+Extensions.swift */; };
 		B4B2F077238956270024951C /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B2F076238956270024951C /* DetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		B41CCB9223846C8000FC7F62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B41CCB98238474FA00FC7F62 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		B42145A723886D0E001C4532 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		B4491295238A8ED900BED742 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		B4B2F076238956270024951C /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +66,7 @@
 			children = (
 				B41CCB8423846C7B00FC7F62 /* AppDelegate.swift */,
 				B41CCB8623846C7B00FC7F62 /* SceneDelegate.swift */,
+				B4491295238A8ED900BED742 /* String+Extensions.swift */,
 				B4B2F079238962700024951C /* Details screen */,
 				B4B2F078238962430024951C /* Search screen */,
 				B41CCB8A23846C7B00FC7F62 /* Main.storyboard */,
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B41CCB8923846C7B00FC7F62 /* SearchViewController.swift in Sources */,
+				B4491296238A8ED900BED742 /* String+Extensions.swift in Sources */,
 				B41CCB8523846C7B00FC7F62 /* AppDelegate.swift in Sources */,
 				B41CCB99238474FA00FC7F62 /* SearchViewModel.swift in Sources */,
 				B41CCB8723846C7B00FC7F62 /* SceneDelegate.swift in Sources */,

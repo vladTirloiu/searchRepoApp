@@ -9,31 +9,41 @@
 import UIKit
 
 protocol DetailsViewModelDelegate {
-//    func readmeRequest(repoName: String, ownerName: String)
+    func passRequestData(string: String)
+}
+
+struct DVMResponseData: Codable {
+    let content: String?
 }
 
 class DetailsViewModel  {
 
     var delegate: DetailsViewModelDelegate?
     
-//    func readmeRequest(repoName: String, ownerName: String) {
-//                guard let url = URL(string: "https://api.github.com/repos/\(ownerName)/\(repoName)/readme") else {return}
-//
-//                let session = URLSession.shared
-//                session.dataTask(with: url) { (data, response, error) in
-//                    if let response = response {
-//                        print(response)
-//                    }
-//                    if let data = data {
-//                        do {
-//                            let responseData = try JSONDecoder().decode(ResponseData.self, from: data)
-//
-//                        } catch {
-//                            print(error)
-//                        }
-//                    }
-//                }.resume()
-//    }
+    func readmeRequest(ownerName: String, repoName: String) {
+        guard let url = URL(string: "https://api.github.com/repos/\(ownerName)/\(repoName)/readme") else {return}
+        
+        let session = URLSession.shared
+        session.dataTask(with: url) { (data, response, error) in
+            if let response = response {
+                print(response)
+            }
+            if let data = data {
+                do {
+                    let responseData = try JSONDecoder().decode(DVMResponseData.self, from: data)
+                    
+                    let tempString = responseData.content
+                    if let decodedString = tempString?.base64Decoded() {
+                        print(decodedString)
+                        self.delegate?.passRequestData(string: decodedString)
+                    }
+                    
+                } catch {
+                    print(error)
+                }
+            }
+        }.resume()
+    }
 }
 
 

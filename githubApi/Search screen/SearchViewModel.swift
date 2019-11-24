@@ -14,7 +14,7 @@ protocol SearchViewModelDelegate {
     func showDetailsVC()
 }
 
-struct ResponseData: Codable {
+struct SVMResponseData: Codable {
     let items: [Items]
 }
 
@@ -48,7 +48,7 @@ class SearchViewModel {
             }
             if let data = data {
                 do {
-                    let responseData = try JSONDecoder().decode(ResponseData.self, from: data)
+                    let responseData = try JSONDecoder().decode(SVMResponseData.self, from: data)
                     if searchedText.count == 0 {
                         self.delegate?.showGeneralError(message: "Textfield is empty")
                     } else {

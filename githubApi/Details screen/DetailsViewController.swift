@@ -17,16 +17,34 @@ class DetailsViewController: SearchViewController {
     var stargazers = Int()
     var forks = Int()
     var watchers = Int()
+    var readme = String()
     
     @IBOutlet weak var referanceView: UIView!
     @IBOutlet weak var textView: UITextView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        var ownerName = String()
+        var repoName = String()
+        
+        let splittedRepoName = fullName.split(separator: "/")
+        
+        if let firstString = splittedRepoName.first {
+            ownerName = "\(String(describing: firstString))"
+        }
+        if let secondString = splittedRepoName.last {
+            repoName = "\(String(describing: secondString))"
+        }
+
+        detailsViewModel.readmeRequest(ownerName: ownerName, repoName: repoName)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        textView.text = "\nFull name: \(fullName)" + "\n\n" + "URL: \(url)" + "\n\n" + "Stargazers count: \(stargazers)"
-        
+
         self.detailsViewModel.delegate = self
+        
+        textView.text = ""
                         
         let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: referanceView.frame.width, height: referanceView.frame.height))
         navBar.barTintColor = .white
@@ -43,5 +61,11 @@ class DetailsViewController: SearchViewController {
 }
 
 extension DetailsViewController: DetailsViewModelDelegate {
-
+    
+    func passRequestData(string: String) {
+        self.readme = string
+        DispatchQueue.main.async {
+            self.textView.text = "\nFull name: \(self.fullName)" + "\n\n" + "URL: \(self.url)" + "\n\n" + "Stargazers: \(self.stargazers)" + "\n\n" + "Forks: \(self.forks)" + "\n\n" + "Watchers: \(self.watchers)" + "\n\n" + "Readme content: \(self.readme)"
+        }
+    }
 }
