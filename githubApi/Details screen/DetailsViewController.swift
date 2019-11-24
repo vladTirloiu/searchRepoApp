@@ -12,7 +12,11 @@ class DetailsViewController: SearchViewController {
     
     let detailsViewModel = DetailsViewModel()
     
-    var fullName = ""
+    var fullName = String()
+    var url = String()
+    var stargazers = Int()
+    var forks = Int()
+    var watchers = Int()
     
     @IBOutlet weak var referanceView: UIView!
     @IBOutlet weak var textView: UITextView!
@@ -20,7 +24,7 @@ class DetailsViewController: SearchViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textView.text = fullName + "sssadasmdioasiodmaiosdioasmdoiasdioasidmoiasmdoiasiodmioasdoiasmdio"
+        textView.text = "\nFull name: \(fullName)" + "\n\n" + "URL: \(url)" + "\n\n" + "Stargazers count: \(stargazers)"
         
         self.detailsViewModel.delegate = self
                         

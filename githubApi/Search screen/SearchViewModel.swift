@@ -10,17 +10,9 @@ import UIKit
 
 protocol SearchViewModelDelegate {
     func showGeneralError(message: String)
-    func passFullNameArray(array: [String])
+    func passRequestData(fullNamesArray: [String], urlsArray: [String], forksArray: [Int], stargazersArray: [Int], watchersArray: [Int])
     func showDetailsVC()
-//    func displayInfo(text: String)
 }
-
-//extension SearchViewModelDelegate {
-//    func showGeneralError(message: String) {}
-//    func passFullNameArray(array: [String]) {}
-//    func showDetailsVC() {}
-////    func displayInfo(text: String) {}
-//}
 
 struct ResponseData: Codable {
     let items: [Items]
@@ -36,7 +28,11 @@ struct Items: Codable {
 
 class SearchViewModel {
     
-    var reposNamesArray = Array<String>()
+    var fullNamesArray = Array<String>()
+    var urlsArray = Array<String>()
+    var forksArray = Array<Int>()
+    var stargazersArray = Array<Int>()
+    var watchersArray = Array<Int>()
     
     var delegate: SearchViewModelDelegate?
     
@@ -58,12 +54,27 @@ class SearchViewModel {
                     } else {
                         for (index, _) in responseData.items.enumerated() {
                             if let fullName = responseData.items[index].full_name {
-                                self.reposNamesArray.append(fullName)
+                                self.fullNamesArray.append(fullName)
                             }
-                            
+                            if let repoURL = responseData.items[index].url {
+                                self.urlsArray.append(repoURL)
+                            }
+                            if let forks = responseData.items[index].forks {
+                                self.forksArray.append(forks)
+                            }
+                            if let stargazers = responseData.items[index].stargazers_count{
+                            self.stargazersArray.append(stargazers)
+                            }
+                            if let watchers = responseData.items[index].watchers_count{
+                            self.watchersArray.append(watchers)
+                            }
                         }
-                        self.delegate?.passFullNameArray(array: self.reposNamesArray)
-                        self.reposNamesArray.removeAll()
+                        self.delegate?.passRequestData(fullNamesArray: self.fullNamesArray, urlsArray: self.urlsArray, forksArray: self.forksArray, stargazersArray: self.stargazersArray, watchersArray: self.watchersArray)
+                        self.fullNamesArray.removeAll()
+                        self.urlsArray.removeAll()
+                        self.forksArray.removeAll()
+                        self.stargazersArray.removeAll()
+                        self.watchersArray.removeAll()
                     }
                 } catch {
                     print(error)

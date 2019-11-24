@@ -10,9 +10,13 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    var reposNamesArray = Array<String>()
+    var fullNamesArray = Array<String>()
+    var urlsArray = Array<String>()
+    var forksArray = Array<Int>()
+    var stargazersArray = Array<Int>()
+    var watchersArray = Array<Int>()
     
-    var constant = Int()
+    var index = Int()
     
     let searchViewModel = SearchViewModel()
 
@@ -32,36 +36,38 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         self.searchViewModel.delegate = self
-        
-//        tableView.dataSource = self
-//        tableView.delegate = self
     }
-    
-    
-
 }
 
 extension SearchViewController: SearchViewModelDelegate, UITableViewDelegate, UITableViewDataSource {
- 
-    func passFullNameArray(array: [String]) {
-        if reposNamesArray.first != nil {
-            reposNamesArray.removeAll()
+    
+    func passRequestData(fullNamesArray: [String], urlsArray: [String], forksArray: [Int], stargazersArray: [Int], watchersArray: [Int]) {
+        if self.fullNamesArray.first != nil {
+            self.fullNamesArray.removeAll()
+            self.urlsArray.removeAll()
+            self.forksArray.removeAll()
+            self.stargazersArray.removeAll()
+            self.watchersArray.removeAll()
         }
-        reposNamesArray = array
+        self.fullNamesArray = fullNamesArray
+        self.urlsArray = urlsArray
+        self.forksArray = forksArray
+        self.stargazersArray = stargazersArray
+        self.watchersArray = watchersArray
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reposNamesArray.count
+        return fullNamesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
                 
-        let desplayedString = reposNamesArray[indexPath.row]
+        let desplayedString = fullNamesArray[indexPath.row]
         cell.textLabel?.text = desplayedString
         
         return cell
@@ -69,7 +75,7 @@ extension SearchViewController: SearchViewModelDelegate, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        constant = indexPath.row
+        index = indexPath.row
         showDetailsVC()
     }
     
@@ -88,7 +94,11 @@ extension SearchViewController: SearchViewModelDelegate, UITableViewDelegate, UI
         guard let vc = mainStoryboard.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else { return }
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
-        vc.fullName = reposNamesArray[constant]
+        vc.fullName = fullNamesArray[index]
+        vc.url = urlsArray[index]
+        vc.forks = forksArray[index]
+        vc.stargazers = stargazersArray[index]
+        vc.watchers = watchersArray[index]
         present(vc, animated: true, completion: nil)
         
     }
