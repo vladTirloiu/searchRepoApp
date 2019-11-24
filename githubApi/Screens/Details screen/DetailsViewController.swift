@@ -12,6 +12,13 @@ class DetailsViewController: SearchViewController {
     
     let detailsViewModel = DetailsViewModel()
     
+    let scrollView: UIScrollView = {
+        let v = UIScrollView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.backgroundColor = .cyan
+        return v
+    }()
+    
     var fullName = String()
     var url = String()
     var stargazers = Int()
@@ -45,14 +52,7 @@ class DetailsViewController: SearchViewController {
         self.detailsViewModel.delegate = self
         
         textView.text = ""
-        
-        let scrollView: UIScrollView = {
-            let v = UIScrollView()
-            v.translatesAutoresizingMaskIntoConstraints = false
-            v.backgroundColor = .cyan
-            return v
-        }()
-        
+
         self.view.addSubview(scrollView)
 
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true

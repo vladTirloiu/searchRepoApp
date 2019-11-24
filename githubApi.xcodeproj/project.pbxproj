@@ -45,6 +45,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B404CC7D238AA587005F6049 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				B4B2F079238962700024951C /* Details screen */,
+				B4B2F078238962430024951C /* Search screen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		B404CC7E238AA59B005F6049 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B4491295238A8ED900BED742 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B41CCB7823846C7B00FC7F62 = {
 			isa = PBXGroup;
 			children = (
@@ -66,9 +83,8 @@
 			children = (
 				B41CCB8423846C7B00FC7F62 /* AppDelegate.swift */,
 				B41CCB8623846C7B00FC7F62 /* SceneDelegate.swift */,
-				B4491295238A8ED900BED742 /* String+Extensions.swift */,
-				B4B2F079238962700024951C /* Details screen */,
-				B4B2F078238962430024951C /* Search screen */,
+				B404CC7E238AA59B005F6049 /* Extensions */,
+				B404CC7D238AA587005F6049 /* Screens */,
 				B41CCB8A23846C7B00FC7F62 /* Main.storyboard */,
 				B41CCB8D23846C8000FC7F62 /* Assets.xcassets */,
 				B41CCB8F23846C8000FC7F62 /* LaunchScreen.storyboard */,

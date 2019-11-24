@@ -10,6 +10,8 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    let searchViewModel = SearchViewModel()
+    
     var fullNamesArray = Array<String>()
     var urlsArray = Array<String>()
     var forksArray = Array<Int>()
@@ -17,8 +19,6 @@ class SearchViewController: UIViewController {
     var watchersArray = Array<Int>()
     
     var index = Int()
-    
-    let searchViewModel = SearchViewModel()
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
