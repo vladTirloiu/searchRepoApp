@@ -53,18 +53,19 @@ class DetailsViewController: SearchViewController {
         
         textView.text = ""
 
-        self.view.addSubview(scrollView)
+        referanceView.addSubview(scrollView)
 
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        scrollView.addSubview(textView)
                         
         let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: textView.frame.width, height: textView.frame.height))
         navBar.barTintColor = .white
-        self.textView.addSubview(navBar)
+        
+        referanceView.addSubview(navBar)
+        referanceView.addSubview(textView)
+        
         let button = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(dismissDetailsVC))
         let navItem = UINavigationItem()
         navItem.leftBarButtonItem = button

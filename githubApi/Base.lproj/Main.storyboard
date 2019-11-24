@@ -116,13 +116,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cmJ-mQ-QHh" userLabel="referanceView">
-                                <rect key="frame" x="20" y="59" width="374" height="778"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmJ-mQ-QHh" userLabel="referanceView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="31l-qg-P2o">
-                                        <rect key="frame" x="0.0" y="40" width="374" height="738"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="31l-qg-P2o">
+                                        <rect key="frame" x="0.0" y="40" width="414" height="778"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -131,9 +129,21 @@
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="31l-qg-P2o" secondAttribute="bottom" id="AGF-M3-Byu"/>
+                                    <constraint firstItem="31l-qg-P2o" firstAttribute="leading" secondItem="cmJ-mQ-QHh" secondAttribute="leading" id="AGO-Ir-c2T"/>
+                                    <constraint firstAttribute="trailing" secondItem="31l-qg-P2o" secondAttribute="trailing" id="JHH-Zx-qBJ"/>
+                                    <constraint firstItem="31l-qg-P2o" firstAttribute="top" secondItem="cmJ-mQ-QHh" secondAttribute="top" constant="40" id="coT-lT-pNL"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cmJ-mQ-QHh" firstAttribute="top" secondItem="cam-Kb-GoB" secondAttribute="top" id="6oG-CI-aC9"/>
+                            <constraint firstItem="cmJ-mQ-QHh" firstAttribute="leading" secondItem="cam-Kb-GoB" secondAttribute="leading" id="B2j-f0-apT"/>
+                            <constraint firstItem="cam-Kb-GoB" firstAttribute="trailing" secondItem="cmJ-mQ-QHh" secondAttribute="trailing" id="Zsj-B6-doc"/>
+                            <constraint firstItem="cam-Kb-GoB" firstAttribute="bottom" secondItem="cmJ-mQ-QHh" secondAttribute="bottom" id="bwg-sE-tbp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cam-Kb-GoB"/>
                     </view>
                     <navigationItem key="navigationItem" id="u2A-G7-zaA"/>
