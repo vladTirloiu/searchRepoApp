@@ -116,28 +116,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="31l-qg-P2o">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmJ-mQ-QHh" userLabel="referanceView">
                                 <rect key="frame" x="20" y="64" width="374" height="778"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="31l-qg-P2o">
+                                        <rect key="frame" x="0.0" y="40" width="374" height="738"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="31l-qg-P2o" secondAttribute="bottom" id="1g8-MT-dzZ"/>
+                                    <constraint firstItem="31l-qg-P2o" firstAttribute="leading" secondItem="cmJ-mQ-QHh" secondAttribute="leading" id="Fbg-uW-DnW"/>
+                                    <constraint firstItem="31l-qg-P2o" firstAttribute="top" secondItem="cmJ-mQ-QHh" secondAttribute="top" constant="40" id="RMv-Nr-kvO"/>
+                                    <constraint firstAttribute="trailing" secondItem="31l-qg-P2o" secondAttribute="trailing" id="Tq6-ak-UdY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="31l-qg-P2o" firstAttribute="leading" secondItem="cam-Kb-GoB" secondAttribute="leading" constant="20" id="Fb6-He-Vbr"/>
-                            <constraint firstItem="cam-Kb-GoB" firstAttribute="bottom" secondItem="31l-qg-P2o" secondAttribute="bottom" constant="20" id="GIE-a0-rbe"/>
-                            <constraint firstItem="31l-qg-P2o" firstAttribute="top" secondItem="cam-Kb-GoB" secondAttribute="top" constant="20" id="IAO-tY-ANu"/>
-                            <constraint firstItem="31l-qg-P2o" firstAttribute="centerY" secondItem="cam-Kb-GoB" secondAttribute="centerY" id="QqL-Wu-X23"/>
-                            <constraint firstItem="31l-qg-P2o" firstAttribute="centerX" secondItem="cam-Kb-GoB" secondAttribute="centerX" id="hkU-Jr-Xyb"/>
-                            <constraint firstItem="cam-Kb-GoB" firstAttribute="trailing" secondItem="31l-qg-P2o" secondAttribute="trailing" constant="20" id="qac-cu-OxV"/>
+                            <constraint firstItem="cam-Kb-GoB" firstAttribute="bottom" secondItem="cmJ-mQ-QHh" secondAttribute="bottom" constant="20" id="ATV-NB-SpD"/>
+                            <constraint firstItem="cmJ-mQ-QHh" firstAttribute="top" secondItem="cam-Kb-GoB" secondAttribute="top" constant="20" id="sd1-YW-hgL"/>
+                            <constraint firstItem="cmJ-mQ-QHh" firstAttribute="leading" secondItem="cam-Kb-GoB" secondAttribute="leading" constant="20" id="z0X-Gx-F0K"/>
+                            <constraint firstItem="cam-Kb-GoB" firstAttribute="trailing" secondItem="cmJ-mQ-QHh" secondAttribute="trailing" constant="20" id="zyn-JI-tJi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cam-Kb-GoB"/>
                     </view>
                     <navigationItem key="navigationItem" id="u2A-G7-zaA"/>
                     <connections>
+                        <outlet property="referanceView" destination="cmJ-mQ-QHh" id="F6m-TJ-ppr"/>
                         <outlet property="textView" destination="31l-qg-P2o" id="ERm-ME-DH0"/>
                     </connections>
                 </viewController>

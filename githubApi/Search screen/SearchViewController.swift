@@ -12,42 +12,37 @@ class SearchViewController: UIViewController {
     
     var reposNamesArray = Array<String>()
     
+    var constant = Int()
+    
     let searchViewModel = SearchViewModel()
 
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var searchTextField: UITextField!
-    
     @IBOutlet weak var searchButton: UIButton!
     
     @IBAction func searchButtonTaped(_ sender: Any) {
         if let searchedText = searchTextField.text {
             searchViewModel.searchText(searchedText: searchedText)
+            tableView.dataSource = self
+            tableView.delegate = self
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.searchViewModel.delegate = self
         
-        tableView.dataSource = self
-        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.delegate = self
     }
+    
+    
+
 }
 
 extension SearchViewController: SearchViewModelDelegate, UITableViewDelegate, UITableViewDataSource {
-    
-    func showDetailsVC() {
-        
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        
-        guard let vc = mainStoryboard.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else { return }
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.modalTransitionStyle = .crossDissolve
-        present(vc, animated: true, completion: nil)
-    }
-    
-    
+ 
     func passFullNameArray(array: [String]) {
         if reposNamesArray.first != nil {
             reposNamesArray.removeAll()
@@ -74,9 +69,9 @@ extension SearchViewController: SearchViewModelDelegate, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        constant = indexPath.row
         showDetailsVC()
     }
-    
     
     func showGeneralError(message: String) {
         DispatchQueue.main.async {
@@ -84,5 +79,17 @@ extension SearchViewController: SearchViewModelDelegate, UITableViewDelegate, UI
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         }
+    }
+    
+    func showDetailsVC() {
+        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        guard let vc = mainStoryboard.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else { return }
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        vc.fullName = reposNamesArray[constant]
+        present(vc, animated: true, completion: nil)
+        
     }
 }

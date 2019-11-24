@@ -12,7 +12,15 @@ protocol SearchViewModelDelegate {
     func showGeneralError(message: String)
     func passFullNameArray(array: [String])
     func showDetailsVC()
+//    func displayInfo(text: String)
 }
+
+//extension SearchViewModelDelegate {
+//    func showGeneralError(message: String) {}
+//    func passFullNameArray(array: [String]) {}
+//    func showDetailsVC() {}
+////    func displayInfo(text: String) {}
+//}
 
 struct ResponseData: Codable {
     let items: [Items]
@@ -20,6 +28,10 @@ struct ResponseData: Codable {
 
 struct Items: Codable {
     let full_name: String?
+    let url: String?
+    let forks: Int?
+    let stargazers_count: Int?
+    let watchers_count: Int?
 }
 
 class SearchViewModel {
@@ -49,8 +61,8 @@ class SearchViewModel {
                                 self.reposNamesArray.append(fullName)
                             }
                             
-                            self.delegate?.passFullNameArray(array: self.reposNamesArray)
                         }
+                        self.delegate?.passFullNameArray(array: self.reposNamesArray)
                         self.reposNamesArray.removeAll()
                     }
                 } catch {
